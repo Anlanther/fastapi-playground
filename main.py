@@ -19,20 +19,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-async def generate_stream(data: list[AgentResponse], delay= 0.5):
+
+async def generate_stream(data: list[AgentResponse], delay=0.5):
     for item in data:
-        payload = json.dumps(item.model_dump(mode='json')) + "\n"
+        payload = json.dumps(item.model_dump(mode="json")) + "\n"
         yield payload
         await asyncio.sleep(delay)
 
 
-@app.post('/research')
+@app.post("/research")
 async def stream_research_response() -> StreamingResponse:
-    return StreamingResponse(generate_stream(MOCK_RESPONSE_1), media_type="application/json")
+    return StreamingResponse(
+        generate_stream(MOCK_RESPONSE_1), media_type="text/event-stream"
+    )
 
-@app.post('/core')
+
+@app.post("/core")
 async def stream_core_response() -> StreamingResponse:
-    return StreamingResponse(generate_stream(MOCK_RESPONSE_2), media_type="application/json")
+    return StreamingResponse(
+        generate_stream(MOCK_RESPONSE_2), media_type="text/event-stream"
+    )
 
 
 if __name__ == "__main__":

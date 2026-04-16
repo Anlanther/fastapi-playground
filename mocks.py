@@ -43,8 +43,7 @@ MOCK_RESPONSE_1: list[AgentResponse] = [
     TextResponse(text=" allow for the calculation of which amounts are supposed"),
     TextResponse(text=" to be added/subtracted to get to the final value.\n\nThis"),
     TextResponse(text=" repository will be open to any contributions that could"),
-    TextResponse(text=" get these scripts to overcome this limitation."),
-    
+    TextResponse(text=" get these scripts to overcome this limitation."), 
 ]
 
 MOCK_RESPONSE_2: list[AgentResponse] = [
