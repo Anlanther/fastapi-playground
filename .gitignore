@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+.devcontainer/
+data/
+
+.DS_Store
