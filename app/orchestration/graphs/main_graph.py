@@ -1,7 +1,7 @@
 from langgraph.graph import START, StateGraph
 
 from app.orchestration.agents import RouterAgent
-from app.orchestration.graphs import GraphState, RouterInput, RouterOutput
+from app.orchestration.graphs.states import GraphState, RouterInput, RouterOutput
 from app.orchestration.services import LLMService
 
 

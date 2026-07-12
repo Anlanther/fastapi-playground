@@ -7,6 +7,7 @@ from app.models.chat_session_models import (
     ThinkResponse,
     Type,
     get_products_table,
+    get_session_messages_table,
     get_users_table,
 )
 
@@ -20,4 +21,5 @@ __all__ = [
     "Type",
     "get_products_table",
     "get_users_table",
+    "get_session_messages_table",
 ]

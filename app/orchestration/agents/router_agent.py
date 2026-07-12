@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from pydantic.v1.main import BaseModel
 
 from app.orchestration.agents import BaseAgent
-from app.orchestration.graphs import RouterInput, RouterOutput
+from app.orchestration.graphs.states import RouterInput, RouterOutput
 
 AGENT_SYSTEM_MESSAGE = """You are a router agent tasked to categorise user messages. Depending on the category, a specialised agent will take over the task.
 

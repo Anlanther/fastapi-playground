@@ -1,4 +1,4 @@
-from fastapi import Depends
+from fastapi import Depends, HTTPException
 from fastapi.routing import APIRouter
 from pydantic import BaseModel
 
@@ -10,7 +10,9 @@ class ChatRequest(BaseModel):
     message: str
     session_id: str
 
+
 router = APIRouter(prefix="/chat-graph", tags=["Chat Graph"])
+
 
 @router.post("/stream")
 async def chat_stream(request: ChatRequest, graph: MainGraph = Depends(get_graph)):
@@ -20,9 +22,8 @@ async def chat_stream(request: ChatRequest, graph: MainGraph = Depends(get_graph
             "conversation_history": [],
             "next_node": "router_node",
             "routing_category": "",
-            "session_id": ""
+            "session_id": "",
         }
-    except:
-    #     #test
-    # finally:
-    #     yield "data: [DONE]\n\n"
+        return state
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc

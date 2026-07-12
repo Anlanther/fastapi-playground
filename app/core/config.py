@@ -5,6 +5,10 @@ class Settings(BaseSettings):
     app_name: str = "FastAPI Playground"
     database_url: str = "postgresql+asyncpg://user:password@localhost:5432/testdb"
     allow_origins: list[str] = ["http://localhost:4200"]
+    # LangGraph / LM Studio settings
+    llm_provider: str | None = None
+    lmstudio_api_key: str | None = None
+    langgraph_endpoint: str | None = None
 
     lm_endpoint: str = "http://localhost:1234/v1"
     lm_max_retries: int = 3
