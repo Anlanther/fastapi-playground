@@ -1,4 +1,4 @@
-from app.models.chat_session_models import (
+from app.models.agent_response import (
     AgentResponse,
     Chunk,
     ChunksResponse,
@@ -6,7 +6,10 @@ from app.models.chat_session_models import (
     TextResponse,
     ThinkResponse,
     Type,
-    get_products_table,
+)
+from app.models.db_tables import (
+    get_session_messages_table,
+    get_sessions_table,
     get_users_table,
 )
 
@@ -18,6 +21,7 @@ __all__ = [
     "TextResponse",
     "ThinkResponse",
     "Type",
-    "get_products_table",
+    "get_session_messages_table",
+    "get_sessions_table",
     "get_users_table",
 ]

@@ -1,4 +1,3 @@
-from sqlalchemy import Column, Integer, MetaData, String, Table
 from enum import Enum
 from typing import Annotated, Literal, Union
 
@@ -40,7 +39,9 @@ class ChunksResponse(BaseModel):
     chunks: list[Chunk]
 
 
-def get_discriminator(v: Union[TextResponse, ThinkResponse, LogResponse, ChunksResponse]) -> str:
+def get_discriminator(
+    v: Union[TextResponse, ThinkResponse, LogResponse, ChunksResponse],
+) -> str:
     return v.type.value
 
 
@@ -48,25 +49,3 @@ AgentResponse = Annotated[
     Union[TextResponse, ThinkResponse, LogResponse, ChunksResponse],
     Discriminator(get_discriminator),
 ]
-
-
-def get_users_table(metadata: MetaData) -> Table:
-    """Define the users table."""
-    return Table(
-        'users',
-        metadata,
-        Column('id', Integer, primary_key=True, index=True),
-        Column('username', String(50), unique=True, nullable=False),
-        Column('email', String(255), unique=True, nullable=False),
-    )
-
-
-def get_products_table(metadata: MetaData) -> Table:
-    """Define the products table (example for multiple tables)."""
-    return Table(
-        'products',
-        metadata,
-        Column('id', Integer, primary_key=True, index=True),
-        Column('name', String(100), nullable=False),
-        Column('price', Integer, nullable=False),
-    )
