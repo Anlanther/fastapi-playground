@@ -1,4 +1,4 @@
-from collections.abc import AsyncIterator
+from fastapi import Request
 
 from app.core import Database
 from app.core.config import settings
@@ -11,10 +11,5 @@ def initialize_database() -> Database:
     return db
 
 
-async def get_db() -> AsyncIterator[Database]:
-    db = initialize_database()
-    try:
-        await db.init_db()
-        yield db
-    finally:
-        await db.engine.dispose()
+async def get_db(request: Request) -> Database:
+    return request.app.state.db
