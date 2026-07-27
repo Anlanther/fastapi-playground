@@ -6,6 +6,7 @@ from typing_extensions import TypedDict
 class InputState(TypedDict):
     user_query: str
     session_id: str
+    user_id: str
     conversation_history: List[Dict[str, str]]
 
 

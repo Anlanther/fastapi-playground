@@ -8,8 +8,8 @@ from app.models import get_session_messages_table, get_sessions_table, get_users
 def initialize_database() -> Database:
     db = Database(settings.database_url)
     db.register_table("users", get_users_table(db.metadata))
-    db.register_table("users", get_sessions_table(db.metadata))
-    db.register_table("users", get_session_messages_table(db.metadata))
+    db.register_table("sessions", get_sessions_table(db.metadata))
+    db.register_table("session_messages", get_session_messages_table(db.metadata))
     return db
 
 
